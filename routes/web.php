@@ -24,6 +24,7 @@ Route::get('/', function () {
     ]);
 });
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -32,4 +33,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::get('impersonate/{user}', [\App\Http\Controllers\ImpersonateController::class, 'impersonate']);
 });
